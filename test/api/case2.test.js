@@ -98,4 +98,39 @@ describe('/api/case2', () => {
             });
         });
     });
+
+    describe('arg3', () => {
+        describe('Type', () => {
+            describe('Error', () => {
+                test('alphabet', async() => {
+                    const param = {
+                        arg1: 1,
+                        arg3: 'true'
+                    };
+                    const response = await request(app).post(Url).send(param);
+                    expect(response.statusCode).toBe(400);
+                });
+
+                test('number', async() => {
+                    const param = {
+                        arg1: 1,
+                        arg3: 1
+                    };
+                    const response = await request(app).post(Url).send(param);
+                    expect(response.statusCode).toBe(400);
+                });
+            });
+
+            describe('Success', () => {
+                test('boolean', async() => {
+                    const param = {
+                        arg1: 1,
+                        arg3: true
+                    };
+                    const response = await request(app).post(Url).send(param);
+                    expect(response.statusCode).toBe(200);
+                });
+            });
+        });
+    });
 });
