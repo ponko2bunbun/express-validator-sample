@@ -21,13 +21,15 @@ function validateParam() {
             .not().isString()
             .not().isInt()
             .isBoolean(),
+        check('arg2')
+            .optional({nullable: true})
+            .isString(),
         oneOf(
             [
                 check('arg1')
                     .custom((value) => value === false),
                 check('arg2')
                     .exists({checkNull: true})
-                    .isString()
             ]
         )
     ];
