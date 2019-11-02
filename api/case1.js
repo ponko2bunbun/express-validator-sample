@@ -5,13 +5,13 @@ const router = express.Router();
 const {check, validationResult} = require('express-validator');
 
 router.get('/', validateParam(), async (req, res) => {
-        const errors = validationResult(req);
-        if(!errors.isEmpty()) {
-            res.status(400).end();
-            return;
-        }
+    const errors = validationResult(req);
+    if(!errors.isEmpty()) {
+        res.status(400).end();
+        return;
+    }
 
-		res.status(200).end();
+    res.status(200).end();
 });
 
 function validateParam() {
