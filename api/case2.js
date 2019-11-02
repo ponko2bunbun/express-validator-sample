@@ -27,6 +27,7 @@ function validateParam() {
         check('arg3')
             .optional({nullable: true})
             .not().isString()
+            .not().isInt()
             .isBoolean()
     ];
 }
